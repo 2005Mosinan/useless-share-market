@@ -3,25 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unicorn Widgets - Useless Share Market</title>
+    <title>Unicorn Widget - Useless Share Market</title>
     <style>
         /* Styles */
         body {
             font-family: 'Comic Sans MS', cursive, sans-serif;
-            background-color: #fce4ec;
+            background-color: #f0e6ff;
             color: #333;
             text-align: center;
         }
         header {
-            background-color: #ff80ab;
+            background-color: #d6b5ff;
             padding: 20px;
             border-radius: 10px;
             margin-bottom: 20px;
-            border: 5px dashed #f50057;
+            border: 5px dashed #a87bc3;
         }
-        .stock-info, .detailed-info {
+        .graph-section, .detailed-info, .stock-info, .stats-section {
+            margin: 0 auto;
             padding: 20px;
-            border: 3px solid #64b5f6;
+            border: 6px solid #e1b7ff;
             background-color: #ffffff;
             display: inline-block;
             border-radius: 10px;
@@ -31,7 +32,7 @@
             text-align: left;
         }
         .button {
-            background-color: #f50057;
+            background-color: #a87bc3;
             color: white;
             padding: 10px;
             border: none;
@@ -42,7 +43,7 @@
             display: inline-block;
         }
         .button:hover {
-            background-color: #c51162;
+            background-color: #946ab2;
         }
         /* Notification styling */
         .notification {
@@ -51,7 +52,7 @@
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            background-color: #f44336;
+            background-color: #ff69b4;
             color: white;
             padding: 15px;
             border-radius: 5px;
@@ -67,35 +68,64 @@
             from { opacity: 1; }
             to { opacity: 0; }
         }
+
+        .grid {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            justify-content: center;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Unicorn Widgets</h1>
-        <p>Stock details and fun facts!</p>
+        <h1>Unicorn Widget</h1>
+        <p>Magical stock details for whimsical investors!</p>
     </header>
 
-    <!-- Brief Stock Info Section -->
-    <div class="stock-info">
-        <p><strong>Current Price:</strong> $123.45</p>
-        <p><strong>Yesterday’s High:</strong> $150.00</p>
-        <p><strong>Yesterday’s Low:</strong> $120.00</p>
-        <p class="funny">"Why did the unicorn buy a ladder? To reach the next level!"</p>
+    <section class="grid">
+    <!-- Graph Section Positioned at the Top -->
+    <div class="graph-section">
+        <h3>Stock Performance Over Time</h3>
+        <canvas id="stockChart" width="400" height="200"></canvas>
     </div>
 
-    <!-- Detailed Stock Information Section -->
+    <!-- Detailed Stock Information Section Positioned Below the Graph -->
     <div class="detailed-info">
-        <h3>About Unicorn Widgets</h3>
-        <p><strong>Industry:</strong> Magical Gadgets & Toys</p>
-        <p><strong>Market Cap:</strong> $10 Billion</p>
-        <p><strong>Dividend Yield:</strong> 4.0%</p>
+        <h3>About Unicorn Widget</h3>
+        <p><strong>Industry:</strong> Fantasy Tech</p>
+        <p><strong>Market Cap:</strong> $3 Billion</p>
+        <p><strong>Dividend Yield:</strong> 1.5%</p>
         <p><strong>P/E Ratio:</strong> 25.0</p>
-        <p><strong>Headquarters:</strong> Fantasyland, Enchanted Forest</p>
-        <p><strong>Fun Fact:</strong> Unicorn Widgets are known for their "Sparkle Widget," which brings joy to anyone who touches it!</p>
-        <p><strong>CEO:</strong> Lila Rainbowhorn</p>
-        <p><strong>Year Established:</strong> 2010</p>
+        <p><strong>52-Week High:</strong> $200.00</p>
+        <p><strong>52-Week Low:</strong> $120.00</p>
+        <p><strong>Beta:</strong> 0.80</p>
+        <p><strong>Headquarters:</strong> Rainbow Valley, Dreamland</p>
+        <p><strong>Fun Fact:</strong> Unicorn Widget creates magical gadgets that can only be seen in dreams!</p>
+        <p><strong>CEO:</strong> Sparkle Glitter</p>
+        <p><strong>Year Established:</strong> 2015</p>
         <p><strong>Stock Symbol:</strong> UNI</p>
     </div>
+
+    <!-- Brief Stock Info Section Positioned Below the Detailed Information -->
+    <div class="stock-info">
+        <p><strong>Current Price:</strong> $150.00</p>
+        <p><strong>Yesterday’s High:</strong> $160.00</p>
+        <p><strong>Yesterday’s Low:</strong> $145.00</p>
+        <p class="funny">"Why did the unicorn go to school? To improve its "horn-ucopia" of knowledge!"</p>
+    </div>
+
+    <!-- Key Stats Section -->
+    <div class="stats-section">
+        <h3>Key Performance Indicators</h3>
+        <p><strong>Revenue:</strong> $500 Million</p>
+        <p><strong>Gross Margin:</strong> 45%</p>
+        <p><strong>Operating Margin:</strong> 20%</p>
+        <p><strong>Net Income:</strong> $75 Million</p>
+        <p><strong>Earnings Per Share (EPS):</strong> $3.00</p>
+    </div>
+</section>
 
     <!-- Notification Div -->
     <div id="notification" class="notification"></div>
@@ -107,6 +137,8 @@
         <a href="BUSINESS.html" class="button">← Back to Stocks</a>
     </div>
 
+    <!-- Chart.js and Custom Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         function showNotification(message) {
             const notification = document.getElementById('notification');
@@ -117,9 +149,9 @@
 
         function buyStock() {
             const messages = [
-                "You've found a magical investment! 🦄",
-                "Buying Unicorn Widgets? You're on the right track to rainbows! 🌈",
-                "Congrats! You've just added some sparkle to your portfolio! ✨"
+                "You just made a magical investment with Unicorn Widget! 🦄",
+                "Congrats on adding a sprinkle of magic to your portfolio! ✨",
+                "You're now a proud investor in Unicorn Widget! Let your profits soar! 🎉"
             ];
             const randomMessage = messages[Math.floor(Math.random() * messages.length)];
             showNotification(randomMessage);
@@ -127,13 +159,35 @@
 
         function sellStock() {
             const messages = [
-                "You sold your unicorn shares! Hope it doesn't leave you in the dust! 🦄",
-                "Selling? I hope you find another magical investment! ✨",
-                "Goodbye, Unicorn Widgets! May your profits be as high as a unicorn's dreams! 💰"
+                "You've turned your dreams into profits! 🌈",
+                "Selling already? Hope your next journey is just as magical! 🦄",
+                "Goodbye, Unicorn Widget! May your profits remain magical! 💰"
             ];
             const randomMessage = messages[Math.floor(Math.random() * messages.length)];
             showNotification(randomMessage);
         }
+
+        // Chart.js script to display a sample line graph
+        const ctx = document.getElementById('stockChart').getContext('2d');
+        const stockChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [{
+                    label: 'Unicorn Widget Stock Price',
+                    data: [140, 145, 150, 155, 160, 158, 150],
+                    borderColor: '#d6b5ff',
+                    backgroundColor: 'rgba(214, 181, 255, 0.2)',
+                    fill: true
+                }]
+            },
+            options: {
+                scales: {
+                    y: { beginAtZero: false }
+                }
+            }
+        });
     </script>
 </body>
 </html>
+

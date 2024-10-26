@@ -3,25 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banana Co. - Useless Share Market</title>
+    <title>Banana Co - Useless Share Market</title>
     <style>
         /* Styles */
         body {
             font-family: 'Comic Sans MS', cursive, sans-serif;
-            background-color: #e0f7fa;
+            background-color: #fffacd;
             color: #333;
             text-align: center;
         }
         header {
-            background-color: #ffeb3b;
+            background-color: #ffd700;
             padding: 20px;
             border-radius: 10px;
             margin-bottom: 20px;
-            border: 5px dashed #ff9800;
+            border: 5px dashed #daa520;
         }
-        .stock-info, .detailed-info {
+        .graph-section, .detailed-info, .stock-info, .stats-section {
+            margin: 0 auto;
             padding: 20px;
-            border: 3px solid #66bb6a;
+            border: 6px solid #ffeb3b;
             background-color: #ffffff;
             display: inline-block;
             border-radius: 10px;
@@ -31,7 +32,7 @@
             text-align: left;
         }
         .button {
-            background-color: #ff9800;
+            background-color: #daa520;
             color: white;
             padding: 10px;
             border: none;
@@ -42,7 +43,7 @@
             display: inline-block;
         }
         .button:hover {
-            background-color: #ff5722;
+            background-color: #b8860b;
         }
         /* Notification styling */
         .notification {
@@ -51,7 +52,7 @@
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            background-color: #f44336;
+            background-color: #ff5722;
             color: white;
             padding: 15px;
             border-radius: 5px;
@@ -67,35 +68,64 @@
             from { opacity: 1; }
             to { opacity: 0; }
         }
+
+        .grid {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            justify-content: center;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Banana Co.</h1>
-        <p>Stock details and fun facts!</p>
+        <h1>Banana Co</h1>
+        <p>Stock details and fruity facts for investors!</p>
     </header>
 
-    <!-- Brief Stock Info Section -->
-    <div class="stock-info">
-        <p><strong>Current Price:</strong> $305.75</p>
-        <p><strong>Yesterday’s High:</strong> $560.00</p>
-        <p><strong>Yesterday’s Low:</strong> $290.00</p>
-        <p class="funny">"Why did the banana go to the doctor? It wasn’t peeling well!"</p>
+    <section class="grid">
+    <!-- Graph Section Positioned at the Top -->
+    <div class="graph-section">
+        <h3>Stock Performance Over Time</h3>
+        <canvas id="stockChart" width="400" height="200"></canvas>
     </div>
 
-    <!-- Detailed Stock Information Section -->
+    <!-- Detailed Stock Information Section Positioned Below the Graph -->
     <div class="detailed-info">
-        <h3>About Banana Co.</h3>
-        <p><strong>Industry:</strong> Fresh Produce & Exports</p>
-        <p><strong>Market Cap:</strong> $15 Billion</p>
-        <p><strong>Dividend Yield:</strong> 2.8%</p>
-        <p><strong>P/E Ratio:</strong> 12.3</p>
-        <p><strong>Headquarters:</strong> Chiquita City, Costa Rica</p>
-        <p><strong>Fun Fact:</strong> Banana Co. is the world's leading supplier of the "Banana Phone," now also available as a ringtone!</p>
-        <p><strong>CEO:</strong> Bob Bananason</p>
-        <p><strong>Year Established:</strong> 1978</p>
+        <h3>About Banana Co</h3>
+        <p><strong>Industry:</strong> Fresh Produce & Tropical Fruits</p>
+        <p><strong>Market Cap:</strong> $1.5 Billion</p>
+        <p><strong>Dividend Yield:</strong> 1.5%</p>
+        <p><strong>P/E Ratio:</strong> 16.2</p>
+        <p><strong>52-Week High:</strong> $90.00</p>
+        <p><strong>52-Week Low:</strong> $60.00</p>
+        <p><strong>Beta:</strong> 1.10</p>
+        <p><strong>Headquarters:</strong> Honolulu, Hawaii</p>
+        <p><strong>Fun Fact:</strong> Banana Co hosts the famous "Banana Bonanza" festival with banana splits and smoothies every summer!</p>
+        <p><strong>CEO:</strong> Bebe Bunch</p>
+        <p><strong>Year Established:</strong> 1988</p>
         <p><strong>Stock Symbol:</strong> BANA</p>
     </div>
+
+    <!-- Brief Stock Info Section Positioned Below the Detailed Information -->
+    <div class="stock-info">
+        <p><strong>Current Price:</strong> $78.90</p>
+        <p><strong>Yesterday’s High:</strong> $82.00</p>
+        <p><strong>Yesterday’s Low:</strong> $76.00</p>
+        <p class="funny">"Why did the banana go to the doctor? It wasn't peeling well!"</p>
+    </div>
+
+    <!-- Key Stats Section -->
+    <div class="stats-section">
+        <h3>Key Performance Indicators</h3>
+        <p><strong>Revenue:</strong> $400 Million</p>
+        <p><strong>Gross Margin:</strong> 35%</p>
+        <p><strong>Operating Margin:</strong> 10%</p>
+        <p><strong>Net Income:</strong> $40 Million</p>
+        <p><strong>Earnings Per Share (EPS):</strong> $2.00</p>
+    </div>
+</section>
 
     <!-- Notification Div -->
     <div id="notification" class="notification"></div>
@@ -107,6 +137,8 @@
         <a href="BUSINESS.html" class="button">← Back to Stocks</a>
     </div>
 
+    <!-- Chart.js and Custom Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         function showNotification(message) {
             const notification = document.getElementById('notification');
@@ -117,9 +149,9 @@
 
         function buyStock() {
             const messages = [
-                "You’re going bananas for Banana Co.! 🍌",
-                "Buying Banana Co.? You must be ape-solutely thrilled! 🦧",
-                "Congrats! You're officially a top banana in the market! 😂"
+                "You're making a fruitful investment with Banana Co! 🍌",
+                "Congrats on choosing Banana Co! Go bananas! 🍌",
+                "You’re now an investor in Banana Co! Get ready for some potassium-packed returns! 😋"
             ];
             const randomMessage = messages[Math.floor(Math.random() * messages.length)];
             showNotification(randomMessage);
@@ -127,16 +159,38 @@
 
         function sellStock() {
             const messages = [
-                "Goodbye Banana Co! Hope you slip into some profits! 🍌",
-                "Selling already? Don't let the bananas rot in your portfolio! 🍌",
-                "Farewell, banana stocks! You’ve gone from peel to profit! 💰"
+                "You've made a fruitful profit! 🍍",
+                "Selling already? Hope you don't slip on those banana peels! 🍌",
+                "Goodbye, Banana Co! May your profits be ever fruitful! 💰"
             ];
             const randomMessage = messages[Math.floor(Math.random() * messages.length)];
             showNotification(randomMessage);
         }
+
+        // Chart.js script to display a sample line graph
+        const ctx = document.getElementById('stockChart').getContext('2d');
+        const stockChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [{
+                    label: 'Banana Co Stock Price',
+                    data: [70, 72, 75, 78, 80, 76, 79],
+                    borderColor: '#ffd700',
+                    backgroundColor: 'rgba(255, 223, 0, 0.2)',
+                    fill: true
+                }]
+            },
+            options: {
+                scales: {
+                    y: { beginAtZero: false }
+                }
+            }
+        });
     </script>
 </body>
 </html>
+
 
 
 

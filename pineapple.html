@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pineapple Corp. - Useless Share Market</title>
+    <title>Pineapple Corp - Useless Share Market</title>
     <style>
         /* Styles */
         body {
             font-family: 'Comic Sans MS', cursive, sans-serif;
-            background-color: #e0f7fa;
+            background-color: #d0cec0;
             color: #333;
             text-align: center;
         }
@@ -17,11 +17,12 @@
             padding: 20px;
             border-radius: 10px;
             margin-bottom: 20px;
-            border: 5px dashed #ff5733;
+            border: 5px dashed #ff9900;
         }
-        .stock-info, .detailed-info {
+        .graph-section, .detailed-info, .stock-info, .stats-section {
+            margin: 0 auto;
             padding: 20px;
-            border: 3px solid #66bb6a;
+            border: 6px solid #ffe07d;
             background-color: #ffffff;
             display: inline-block;
             border-radius: 10px;
@@ -31,7 +32,7 @@
             text-align: left;
         }
         .button {
-            background-color: #ff5733;
+            background-color: #ff9900;
             color: white;
             padding: 10px;
             border: none;
@@ -42,7 +43,7 @@
             display: inline-block;
         }
         .button:hover {
-            background-color: #ff0000;
+            background-color: #cc7a00;
         }
         /* Notification styling */
         .notification {
@@ -51,7 +52,7 @@
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            background-color: #f44336;
+            background-color: #eb9903;
             color: white;
             padding: 15px;
             border-radius: 5px;
@@ -67,35 +68,64 @@
             from { opacity: 1; }
             to { opacity: 0; }
         }
+
+        .grid {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            justify-content: center;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Pineapple Corp.</h1>
-        <p>Stock details and fun facts!</p>
+        <h1>Pineapple Corp</h1>
+        <p>Stock details and tropical vibes for investors!</p>
     </header>
 
-    <!-- Brief Stock Info Section -->
-    <div class="stock-info">
-        <p><strong>Current Price:</strong> $459.99</p>
-        <p><strong>Yesterday’s High:</strong> $820.00</p>
-        <p><strong>Yesterday’s Low:</strong> $380.00</p>
-        <p class="funny">"Did you hear about the pineapple that became a comedian? It had great delivery!"</p>
+    <section class="grid">
+    <!-- Graph Section Positioned at the Top -->
+    <div class="graph-section">
+        <h3>Stock Performance Over Time</h3>
+        <canvas id="stockChart" width="400" height="200"></canvas>
     </div>
 
-    <!-- Detailed Stock Information Section -->
+    <!-- Detailed Stock Information Section Positioned Below the Graph -->
     <div class="detailed-info">
-        <h3>About Pineapple Corp.</h3>
-        <p><strong>Industry:</strong> Tropical Fruits & Beverages</p>
-        <p><strong>Market Cap:</strong> $20 Billion</p>
-        <p><strong>Dividend Yield:</strong> 3.2%</p>
-        <p><strong>P/E Ratio:</strong> 15.6</p>
+        <h3>About Pineapple Corp</h3>
+        <p><strong>Industry:</strong> Agriculture & Fruit Products</p>
+        <p><strong>Market Cap:</strong> $1.5 Billion</p>
+        <p><strong>Dividend Yield:</strong> 2.5%</p>
+        <p><strong>P/E Ratio:</strong> 20.0</p>
+        <p><strong>52-Week High:</strong> $100.00</p>
+        <p><strong>52-Week Low:</strong> $70.00</p>
+        <p><strong>Beta:</strong> 1.15</p>
         <p><strong>Headquarters:</strong> Honolulu, Hawaii</p>
-        <p><strong>Fun Fact:</strong> Pineapple Corp. was the first company to offer a "Pineapple Pizza Fund," leading to a global debate about pizza toppings.</p>
-        <p><strong>CEO:</strong> Juanita Pineappleston</p>
-        <p><strong>Year Established:</strong> 1985</p>
+        <p><strong>Fun Fact:</strong> Pineapple Corp is famous for its annual "Tropical Fruit Festival" featuring the world's largest pineapple!</p>
+        <p><strong>CEO:</strong> Ana Nanas</p>
+        <p><strong>Year Established:</strong> 2010</p>
         <p><strong>Stock Symbol:</strong> PINE</p>
     </div>
+
+    <!-- Brief Stock Info Section Positioned Below the Detailed Information -->
+    <div class="stock-info">
+        <p><strong>Current Price:</strong> $85.00</p>
+        <p><strong>Yesterday’s High:</strong> $90.00</p>
+        <p><strong>Yesterday’s Low:</strong> $82.00</p>
+        <p class="funny">"What do you call a pineapple that has a crush? A pineapple-ple!"</p>
+    </div>
+
+    <!-- Key Stats Section -->
+    <div class="stats-section">
+        <h3>Key Performance Indicators</h3>
+        <p><strong>Revenue:</strong> $400 Million</p>
+        <p><strong>Gross Margin:</strong> 42%</p>
+        <p><strong>Operating Margin:</strong> 14%</p>
+        <p><strong>Net Income:</strong> $60 Million</p>
+        <p><strong>Earnings Per Share (EPS):</strong> $2.00</p>
+    </div>
+</section>
 
     <!-- Notification Div -->
     <div id="notification" class="notification"></div>
@@ -107,6 +137,8 @@
         <a href="BUSINESS.html" class="button">← Back to Stocks</a>
     </div>
 
+    <!-- Chart.js and Custom Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         function showNotification(message) {
             const notification = document.getElementById('notification');
@@ -117,9 +149,9 @@
 
         function buyStock() {
             const messages = [
-                "You've invested in a tropical paradise! 🌴",
-                "Buying Pineapple Corp? Sweet choice! 🍍",
-                "Congratulations! You’re now a proud pineapple stakeholder! 😂"
+                "You're investing in a sweet choice with Pineapple Corp! 🍍",
+                "Congrats on adding some tropical flavor to your portfolio with Pineapple Corp! 🍹",
+                "You’re now a proud investor in Pineapple Corp! May your profits grow like a pineapple! 🌱"
             ];
             const randomMessage = messages[Math.floor(Math.random() * messages.length)];
             showNotification(randomMessage);
@@ -127,16 +159,38 @@
 
         function sellStock() {
             const messages = [
-                "You sold Pineapple Corp! Hope you don’t slip on the price! 🍌",
-                "Selling? Guess you’ve had your fill of tropical fruits! 🍹",
-                "Farewell, Pineapple shares! May your wallet stay juicy! 💰"
+                "You've made a juicy profit! 🍍",
+                "Selling already? Hope you didn’t get too prickly! 🍹",
+                "Goodbye, Pineapple Corp! May your profits stay sweet! 💰"
             ];
             const randomMessage = messages[Math.floor(Math.random() * messages.length)];
             showNotification(randomMessage);
         }
+
+        // Chart.js script to display a sample line graph
+        const ctx = document.getElementById('stockChart').getContext('2d');
+        const stockChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [{
+                    label: 'Pineapple Corp Stock Price',
+                    data: [75, 78, 82, 85, 84, 86, 85],
+                    borderColor: '#ffcc00',
+                    backgroundColor: 'rgba(255, 204, 0, 0.2)',
+                    fill: true
+                }]
+            },
+            options: {
+                scales: {
+                    y: { beginAtZero: false }
+                }
+            }
+        });
     </script>
 </body>
 </html>
+
 
 
 

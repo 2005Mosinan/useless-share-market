@@ -94,20 +94,20 @@
 <script>
     // Array of stock objects with details
     const stocks = [
-        { name: 'Banana Co.', price: 999.99, funny: 'Why did the banana go to the doctor? It wasn’t peeling well!', sellFunny: 'You peeled away from that investment!', link: 'banana-co.html' },
-        { name: 'Pineapple Corp.', price: 888.88, funny: 'Did you hear about the pineapple that became a comedian? It had great delivery!', sellFunny: 'You cut off a sweet deal!', link: 'pineapple-corp.html' },
-        { name: 'Cactus Inc.', price: 777.77, funny: 'Why don’t cacti ever get lost? They always know where they’re going!', sellFunny: 'Hope you didn’t get pricked!', link: 'cactus-inc.html' },
-        { name: 'Unicorn Widgets', price: 666.66, funny: 'Why don’t unicorns like to play poker? Because they’re afraid of cheetahs!', sellFunny: 'You chased away a magical deal!', link: 'unicorn-widgets.html' },
-        { name: 'Potato Futures', price: 555.55, funny: 'What do you call a potato that is reluctant to jump? A hesitater!', sellFunny: 'You mashed those profits away!', link: 'potato-futures.html' },
-        { name: 'Chocolate Barrels', price: 444.44, funny: 'What do you call stolen chocolate? A chocolaty crime!', sellFunny: 'You sweetened the deal!', link: 'chocolate-barrels.html' },
-        { name: 'Cookie Monsters', price: 333.33, funny: 'Why did the cookie cry? Because it felt crumby!', sellFunny: 'You dunked your profits!', link: 'cookie-monsters.html' },
-        { name: 'Jellybean Investments', price: 222.22, funny: 'Why did the jellybean go to school? To be a smartie!', sellFunny: 'You jelly-rolled away!', link: 'jellybean-investments.html' },
-        { name: 'Bubble Wrap Inc.', price: 111.11, funny: 'What do you call a pop star? A bubble wrap sensation!', sellFunny: 'You popped out of that investment!', link: 'bubble-wrap-inc.html' },
-        { name: 'Flying Pigs LLC', price: 50.00, funny: 'When pigs fly, their stock prices soar!', sellFunny: 'You let those pigs fly!', link: 'flying-pigs-llc.html' },
+        { name: 'Banana Co.', price: 999.99, funny: 'Why did the banana go to the doctor? It wasn’t peeling well!', link: 'banana.html' },
+        { name: 'Pineapple Corp.', price: 888.88, funny: 'Did you hear about the pineapple that became a comedian? It had great delivery!', link: 'pineapple.html' },
+        { name: 'Cactus Inc.', price: 777.77, funny: 'Why don’t cacti ever get lost? They always know where they’re going!', link: 'cactus.html' },
+        { name: 'Unicorn Widgets', price: 666.66, funny: 'Why don’t unicorns like to play poker? Because they’re afraid of cheetahs!', link: 'unicorn.html' },
+        { name: 'Potato Futures', price: 555.55, funny: 'What do you call a potato that is reluctant to jump? A hesitater!', link: 'potato.html' },
+        { name: 'Chocolate Barrels', price: 444.44, funny: 'What do you call stolen chocolate? A chocolaty crime!', link: 'chocolate.html' },
+        { name: 'Cookie Monsters ', price: 333.33, funny: 'Why did the cookie cry? Because it felt crumby!', link: 'cookie.html' },
+        { name: 'Jellybean Investments', price: 222.22, funny: 'Why did the jellybean go to school? To be a smartie!', link: 'jellybean.html' },
+        { name: 'Bubble Wrap Inc.', price: 111.11, funny: 'What do you call a pop star? A bubble wrap sensation!', link: 'bubblewrap.html' },
+        { name: 'Flying Pigs LLC', price: 50.00, funny: 'When pigs fly, their stock prices soar!', link: 'flying.html' },
         // Additional stocks
-        { name: 'Gummy Bear Investments', price: 600.00, funny: 'Why did the gummy bear start a business? To get a little chewy on the profits!', sellFunny: 'You left a sticky situation!', link: 'gummy-bear.html' },
-        { name: 'Marshmallow Holdings', price: 400.00, funny: 'What do you call a marshmallow in a suit? A fluffy entrepreneur!', sellFunny: 'You roasted that investment!', link: 'marshmallow-holdings.html' },
-        { name: 'Pretzel Profits', price: 300.00, funny: 'Why did the pretzel go to school? To get a little knot-ledge!', sellFunny: 'You untwisted a good deal!', link: 'pretzel-profits.html' }
+        { name: 'Gummy Bear Investments', price: 600.00, funny: 'Why did the gummy bear start a business? To get a little chewy on the profits!', link: 'gummybear.html' },
+        { name: 'Marshmallow Holdings', price: 400.00, funny: 'What do you call a marshmallow in a suit? A fluffy entrepreneur!', link: 'marshmallow.html' },
+        { name: 'Pretzel Profits', price: 300.00, funny: 'Why did the pretzel go to school? To get a little knot-ledge!', link: 'pretzel.html' }
     ];
 
     function showNotification(message) {
@@ -119,21 +119,6 @@
         setTimeout(() => {
             notification.style.display = 'none';
         }, 4000);
-    }
-
-    // Function to handle transaction
-    function transaction(action, stock) {
-        const messages = {
-            buy: `You bought ${stock.name}! ${stock.funny}`,
-            sell: `You sold ${stock.name}! ${stock.sellFunny}`
-        };
-
-        // Show notification based on action
-        if (action === 'sell') {
-            showNotification(messages.sell);
-        } else {
-            showNotification(messages.buy);
-        }
     }
 
     // Render stocks with dynamic price effect
@@ -153,8 +138,7 @@
                 <h2>${stock.name}</h2>
                 <p class="${priceClass}">Current Price: $${stock.price}</p>
                 <p class="funny">${stock.funny}</p>
-                <a href="${stock.link}" class="button" onclick="transaction('buy', ${JSON.stringify(stock)})">Buy</a>
-                <button class="button" onclick="transaction('sell', ${JSON.stringify(stock)})">Sell</button>
+                <a href="${stock.link}" class="button">More Info</a>
             `;
             stocksContainer.appendChild(stockCard);
         });
@@ -169,3 +153,5 @@
 
 </body>
 </html>
+
+

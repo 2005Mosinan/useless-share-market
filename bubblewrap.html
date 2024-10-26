@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cactus Inc - Useless Share Market</title>
+    <title>Bubble Wrap Inc - Useless Share Market</title>
     <style>
         /* Styles */
         body {
             font-family: 'Comic Sans MS', cursive, sans-serif;
-            background-color: #f0fff0;
+            background-color: #f0f8ff;
             color: #333;
             text-align: center;
         }
         header {
-            background-color: #228b22;
+            background-color: #add8e6;
             padding: 20px;
             border-radius: 10px;
             margin-bottom: 20px;
-            border: 5px dashed #556b2f;
+            border: 5px dashed #4682b4;
         }
         .graph-section, .detailed-info, .stock-info, .stats-section {
             margin: 0 auto;
             padding: 20px;
-            border: 6px solid #c0d9af;
+            border: 6px solid #b0e0e6;
             background-color: #ffffff;
             display: inline-block;
             border-radius: 10px;
@@ -32,7 +32,7 @@
             text-align: left;
         }
         .button {
-            background-color: #556b2f;
+            background-color: #4682b4;
             color: white;
             padding: 10px;
             border: none;
@@ -43,7 +43,7 @@
             display: inline-block;
         }
         .button:hover {
-            background-color: #3b5323;
+            background-color: #4169e1;
         }
         /* Notification styling */
         .notification {
@@ -52,7 +52,7 @@
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            background-color: #2e8b57;
+            background-color: #ffcc00;
             color: white;
             padding: 15px;
             border-radius: 5px;
@@ -80,8 +80,8 @@
 </head>
 <body>
     <header>
-        <h1>Cactus Inc</h1>
-        <p>Stock details and desert vibes for investors!</p>
+        <h1>Bubble Wrap Inc</h1>
+        <p>Pop into the market with our fun stock details!</p>
     </header>
 
     <section class="grid">
@@ -93,37 +93,37 @@
 
     <!-- Detailed Stock Information Section Positioned Below the Graph -->
     <div class="detailed-info">
-        <h3>About Cactus Inc</h3>
-        <p><strong>Industry:</strong> Sustainable Landscaping & Desert Plants</p>
-        <p><strong>Market Cap:</strong> $1.2 Billion</p>
+        <h3>About Bubble Wrap Inc</h3>
+        <p><strong>Industry:</strong> Packaging & Supplies</p>
+        <p><strong>Market Cap:</strong> $1 Billion</p>
         <p><strong>Dividend Yield:</strong> 1.8%</p>
-        <p><strong>P/E Ratio:</strong> 17.3</p>
-        <p><strong>52-Week High:</strong> $85.00</p>
-        <p><strong>52-Week Low:</strong> $55.00</p>
-        <p><strong>Beta:</strong> 1.05</p>
-        <p><strong>Headquarters:</strong> Phoenix, Arizona</p>
-        <p><strong>Fun Fact:</strong> Cactus Inc organizes an annual "Cactus Festival" with workshops on sustainable gardening!</p>
-        <p><strong>CEO:</strong> Spike Green</p>
-        <p><strong>Year Established:</strong> 2003</p>
-        <p><strong>Stock Symbol:</strong> CACT</p>
+        <p><strong>P/E Ratio:</strong> 20.0</p>
+        <p><strong>52-Week High:</strong> $45.00</p>
+        <p><strong>52-Week Low:</strong> $30.00</p>
+        <p><strong>Beta:</strong> 0.85</p>
+        <p><strong>Headquarters:</strong> Popville, USA</p>
+        <p><strong>Fun Fact:</strong> Bubble Wrap Inc is famous for its bubble wrap art exhibitions!</p>
+        <p><strong>CEO:</strong> Popper McWrap</p>
+        <p><strong>Year Established:</strong> 2005</p>
+        <p><strong>Stock Symbol:</strong> BUBB</p>
     </div>
 
     <!-- Brief Stock Info Section Positioned Below the Detailed Information -->
     <div class="stock-info">
-        <p><strong>Current Price:</strong> $72.50</p>
-        <p><strong>Yesterday’s High:</strong> $75.00</p>
-        <p><strong>Yesterday’s Low:</strong> $70.00</p>
-        <p class="funny">"What did the cactus say to its stockholders? 'Stick with me, I grow on you!'"</p>
+        <p><strong>Current Price:</strong> $38.50</p>
+        <p><strong>Yesterday’s High:</strong> $40.00</p>
+        <p><strong>Yesterday’s Low:</strong> $36.00</p>
+        <p class="funny">"Why did the bubble wrap break up? It couldn't handle the pressure!"</p>
     </div>
 
     <!-- Key Stats Section -->
     <div class="stats-section">
         <h3>Key Performance Indicators</h3>
-        <p><strong>Revenue:</strong> $250 Million</p>
-        <p><strong>Gross Margin:</strong> 38%</p>
-        <p><strong>Operating Margin:</strong> 12%</p>
-        <p><strong>Net Income:</strong> $30 Million</p>
-        <p><strong>Earnings Per Share (EPS):</strong> $1.75</p>
+        <p><strong>Revenue:</strong> $200 Million</p>
+        <p><strong>Gross Margin:</strong> 30%</p>
+        <p><strong>Operating Margin:</strong> 10%</p>
+        <p><strong>Net Income:</strong> $20 Million</p>
+        <p><strong>Earnings Per Share (EPS):</strong> $1.50</p>
     </div>
 </section>
 
@@ -149,9 +149,9 @@
 
         function buyStock() {
             const messages = [
-                "You're investing in a sharp choice with Cactus Inc! 🌵",
-                "Congrats on going green with Cactus Inc! Let's grow together! 🌱",
-                "You’re now an investor in Cactus Inc! May your profits be as resilient as desert plants! 🌞"
+                "You've just made a popping investment with Bubble Wrap Inc! 🎉",
+                "Congrats on choosing Bubble Wrap Inc! Time to pop some profits! 🎈",
+                "You're now a proud investor in Bubble Wrap! Enjoy the pops! 😄"
             ];
             const randomMessage = messages[Math.floor(Math.random() * messages.length)];
             showNotification(randomMessage);
@@ -159,9 +159,9 @@
 
         function sellStock() {
             const messages = [
-                "You've made a sharp profit! 🌵",
-                "Selling already? Hope you didn't get too prickly! 🌞",
-                "Goodbye, Cactus Inc! May your portfolio stay green! 💰"
+                "You've successfully popped some profits! 🎉",
+                "Selling already? Hope you didn't burst with excitement! 😜",
+                "Goodbye, Bubble Wrap Inc! May your future investments be just as fun! 💰"
             ];
             const randomMessage = messages[Math.floor(Math.random() * messages.length)];
             showNotification(randomMessage);
@@ -174,10 +174,10 @@
             data: {
                 labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
                 datasets: [{
-                    label: 'Cactus Inc Stock Price',
-                    data: [60, 62, 65, 70, 68, 72, 73],
-                    borderColor: '#228b22',
-                    backgroundColor: 'rgba(34, 139, 34, 0.2)',
+                    label: 'Bubble Wrap Inc Stock Price',
+                    data: [35, 36, 37, 40, 38, 39, 38.5],
+                    borderColor: '#4682b4',
+                    backgroundColor: 'rgba(70, 130, 180, 0.2)',
                     fill: true
                 }]
             },
@@ -190,3 +190,4 @@
     </script>
 </body>
 </html>
+
