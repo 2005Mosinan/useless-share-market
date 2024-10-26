@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Useless Share Market</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            text-align: center;
+        }
+        header {
+            background: linear-gradient(135deg, #ffcc00, #ff5733);
+            padding: 20px;
+            margin-bottom: 20px;
+            color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            font-size: 36px;
+            margin: 0;
+            text-shadow: 2px 2px rgba(0, 0, 0, 0.2);
+        }
+        .stocks-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .stock {
+            margin: 20px;
+            padding: 20px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #ffffff, #f1f1f1);
+            width: 220px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        .stock:hover {
+            transform: scale(1.05);
+            background-color: #e0f7fa;
+        }
+        .funny {
+            font-size: 16px;
+            color: #666;
+            margin-top: 10px;
+        }
+        .button {
+            background-color: #ff5733;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            margin: 5px;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #ff0000;
+        }
+        /* Notification styles */
+        .notification {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ffcc00;
+            color: #333;
+            padding: 15px 20px;
+            font-weight: bold;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            animation: slide-down 0.5s forwards, fade-out 2.5s 3s forwards;
+        }
+        @keyframes slide-down {
+            from {
+                top: -50px;
+                opacity: 0;
+            }
+            to {
+                top: 20px;
+                opacity: 1;
+            }
+        }
+        @keyframes fade-out {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }/*  */
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Welcome to the Useless Share Market!</h1>
+    <div class="guru-advice">"🚀Guru Advice: "Buy high, sell low!🚀"</div>
+</header>
+
+<div class="stocks-container" id="stocks-container"></div>
+
+<div id="notification" class="notification"></div>
+
+<script>
+    const stocks = [
+        { name: 'Banana Co.', price: 999.99, funny: 'It wasn’t peeling well!', buyMessage: 'Enjoy your potassium!', sellMessage: 'Hope you don’t slip!' },
+        { name: 'Pineapple Corp.', price: 888.88, funny: 'It had great delivery!', buyMessage: 'Sweet choice!', sellMessage: 'Juicy deal!' },
+        { name: 'Cactus Inc.', price: 777.77, funny: 'They always know where they’re going!', buyMessage: 'Stay sharp!', sellMessage: 'No pricks!' },
+        { name: 'Unicorn Widgets', price: 666.66, funny: 'They fear cheetahs!', buyMessage: 'Magical investment!', sellMessage: 'Keep chasing rainbows!' },
+        { name: 'Potato Futures', price: 555.55, funny: 'It’s a hesitater!', buyMessage: 'Mash profits!', sellMessage: 'Don’t get fried!' },
+        { name: 'Chocolate Barrels', price: 444.44, funny: 'It’s a chocolaty crime!', buyMessage: 'Sweet move!', sellMessage: 'Hope it wasn’t too bitter!' },
+        { name: 'Cookie Monsters', price: 333.33, funny: 'Why did the cookie cry? Because it felt crumby!', buyMessage: 'Crunch time!', sellMessage: 'Don’t crumble under pressure!' },
+        { name: 'Jellybean Investments', price: 222.22, funny: 'Why did the jellybean go to school? To be a smartie!', buyMessage: 'Sweet investment!', sellMessage: 'Hope you have a sweet exit!' },
+        { name: 'Bubble Wrap Inc.', price: 111.11, funny: 'What do you call a pop star? A bubble wrap sensation!', buyMessage: 'Pop those profits!', sellMessage: 'Watch out for the pops!' },
+        { name: 'Flying Pigs LLC', price: 50.00, funny: 'When pigs fly, their stock prices soar!', buyMessage: 'An out-of-this-world investment!', sellMessage: 'Keep your feet on the ground!' },
+        { name: 'Marshmallow Dynamics', price: 29.99, funny: 'Why don’t marshmallows ever get lost? They follow the sweet path!', buyMessage: 'Fluffy choice!', sellMessage: 'Hope it doesn’t melt!' },
+        { name: 'Pickle Investments', price: 19.99, funny: 'Why did the pickle break up? It couldn’t find its gherkin!', buyMessage: 'Dill with it!', sellMessage: 'Hope you’re not sour!' },
+        { name: 'Soda Pop Stocks', price: 9.99, funny: 'Why did the soda go to school? To improve its fizz-ical education!', buyMessage: 'Bubbly investment!', sellMessage: 'Hope it doesn’t go flat!' },
+        { name: 'Pasta Holdings', price: 4.99, funny: 'Why did the pasta get rejected? It wasn’t saucy enough!', buyMessage: 'Noodle your way to the top!', sellMessage: 'Don’t get overcooked!' },
+        { name: 'Vegetable Ventures', price: 3.99, funny: 'Why did the vegetable start a business? It wanted to ketchup on life!', buyMessage: 'Veggie-tastic choice!', sellMessage: 'Hope it doesn’t rot!' },
+    ];
+
+    const stocksContainer = document.getElementById('stocks-container');
+    const notification = document.getElementById('notification');
+
+    stocks.forEach(stock => {
+        const stockCard = document.createElement('div');
+        stockCard.classList.add('stock');
+        stockCard.innerHTML = `
+            <h2>${stock.name}</h2>
+            <p>Current Price: $<span id="${stock.name.replace(/ /g, '-')}-price" class="price">${stock.price.toFixed(2)}</span></p>
+            <p class="funny">${stock.funny}</p>
+            <button class="button" onclick="transaction('buy', '${stock.name}', '${stock.buyMessage}')">Buy</button>
+            <button class="button" onclick="transaction('sell', '${stock.name}', '${stock.sellMessage}')">Sell</button>
+        `;
+        stocksContainer.appendChild(stockCard);
+    });
+
+    function updateStockPrices() {
+        stocks.forEach(stock => {
+            const priceElement = document.getElementById(`${stock.name.replace(/ /g, '-')}-price`);
+            const oldPrice = parseFloat(stock.price);
+            const variation = (Math.random() > 0.5 ? 1 : -1) * (Math.random() * 10); // Random price variation between -10 and 10
+            stock.price = (oldPrice + variation).toFixed(2);
+            priceElement.textContent = stock.price;
+
+            // Change color based on price change
+            if (variation > 0) {
+                priceElement.style.color = 'green'; // Price increased
+            } else {
+                priceElement.style.color = 'red'; // Price decreased
+            }
+        });
+    }
+
+    function transaction(action, stock, message) {
+        notification.textContent = `You ${action}ed ${stock}! ${message}`;
+        notification.style.display = 'block';
+        
+        // Reset notification after a few seconds
+        setTimeout(() => {
+            notification.style.display = 'none';
+        }, 5000);
+    }
+
+    // Update stock prices every 3 seconds
+    setInterval(updateStockPrices, 3000);
+</script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cactus Inc. - Useless Share Market</title>
+    <style>
+        /* Styles */
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #f0e68c;
+            color: #333;
+            text-align: center;
+        }
+        header {
+            background-color: #66cdaa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 5px dashed #d2691e;
+        }
+        .stock-info, .detailed-info {
+            padding: 20px;
+            border: 3px solid #8fbc8f;
+            background-color: #ffffff;
+            display: inline-block;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            max-width: 500px;
+            text-align: left;
+        }
+        .button {
+            background-color: #d2691e;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        .button:hover {
+            background-color: #a0522d;
+        }
+        /* Notification styling */
+        .notification {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #f44336;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            animation: slide-down 0.5s forwards, fade-out 2s 2.5s forwards;
+        }
+        @keyframes slide-down {
+            from { top: -100px; opacity: 0; }
+            to { top: 20px; opacity: 1; }
+        }
+        @keyframes fade-out {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Cactus Inc.</h1>
+        <p>Stock details and fun facts!</p>
+    </header>
+
+    <!-- Brief Stock Info Section -->
+    <div class="stock-info">
+        <p><strong>Current Price:</strong> $182.50</p>
+        <p><strong>Yesterday’s High:</strong> $240.00</p>
+        <p><strong>Yesterday’s Low:</strong> $175.00</p>
+        <p class="funny">"Why did the cactus break up? Because it was too prickly!"</p>
+    </div>
+
+    <!-- Detailed Stock Information Section -->
+    <div class="detailed-info">
+        <h3>About Cactus Inc.</h3>
+        <p><strong>Industry:</strong> Desert Plant Products & Hydration Solutions</p>
+        <p><strong>Market Cap:</strong> $9 Billion</p>
+        <p><strong>Dividend Yield:</strong> 2.1%</p>
+        <p><strong>P/E Ratio:</strong> 10.8</p>
+        <p><strong>Headquarters:</strong> Phoenix, Arizona</p>
+        <p><strong>Fun Fact:</strong> Cactus Inc. is known for introducing the "Hydration Cactus," a plant that holds water longer than any water bottle!</p>
+        <p><strong>CEO:</strong> Sandy Spines</p>
+        <p><strong>Year Established:</strong> 1989</p>
+        <p><strong>Stock Symbol:</strong> CACT</p>
+    </div>
+
+    <!-- Notification Div -->
+    <div id="notification" class="notification"></div>
+
+    <!-- Buy and Sell Buttons at the Bottom of the Page -->
+    <div style="margin-top: 30px;">
+        <button class="button" onclick="buyStock()">Buy</button>
+        <button class="button" onclick="sellStock()">Sell</button>
+        <a href="BUSINESS.html" class="button">← Back to Stocks</a>
+    </div>
+
+    <script>
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.style.display = 'block';
+            setTimeout(() => { notification.style.display = 'none'; }, 4000);
+        }
+
+        function buyStock() {
+            const messages = [
+                "You’re all set for a prickly investment with Cactus Inc.! 🌵",
+                "Going green with Cactus Inc.? Just don’t get pricked! 😉",
+                "Congrats! You’re now a desert investor, stay hydrated! 🏜️"
+            ];
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            showNotification(randomMessage);
+        }
+
+        function sellStock() {
+            const messages = [
+                "You’re leaving the desert behind! 🌞",
+                "Selling already? Hopefully, you didn’t get stuck on a thorn! 🌵",
+                "Goodbye, Cactus stocks! May your profits bloom elsewhere! 💰"
+            ];
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            showNotification(randomMessage);
+        }
+    </script>
+</body>
+</html>

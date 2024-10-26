@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login to Useless Share Market</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f8fb;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .login-container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .login-container h2 {
+            margin-bottom: 20px;
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-style: italic;
+        }
+        /* Dynamic placeholder */
+        input[type="text"]::placeholder {
+            color: #888;
+            animation: blinkPlaceholder 2s steps(2, end) infinite;
+        }
+        input[type="password"]::placeholder {
+            color: #888;
+            animation: blinkPlaceholder 2s steps(2, end) infinite;
+        }
+        @keyframes blinkPlaceholder {
+            50% { opacity: 0; }
+        }
+        /* Button styling */
+        .login-container button {
+            background-color: #ff5733;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            position: relative;
+            transition: background-color 0.3s;
+        }
+        .login-container button:hover {
+            background-color: #ff0000;
+        }
+        /* Loading spinner */
+        .loading-spinner {
+            display: none;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #ff5733;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        /* Funny tooltip on hover */
+        .login-container input:hover::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: -25px;
+            left: 0;
+            right: 0;
+            background: #ffe;
+            color: #333;
+            font-size: 12px;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .error {
+            color: red;
+            margin-top: 10px;
+            display: none;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container" id="login-container">
+    <h2>Welcome to the Useless Share Market!</h2>
+    <input type="text" id="username" placeholder="Username (not 'admin' please!)" data-tooltip="Try something funny!" />
+    <input type="password" id="password" placeholder="Password (we dare you to guess)" data-tooltip="Is it really secure though?" />
+    <button onclick="login()">Login to Ridiculousness</button>
+    <div class="loading-spinner" id="loading-spinner"></div>
+    <p class="error" id="error-message">Oops! Wrong credentials. Forgot 'em again, huh?</p>
+</div>
+
+<script>
+    function login() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const errorMessage = document.getElementById('error-message');
+        const loadingSpinner = document.getElementById('loading-spinner');
+
+        // Show loading spinner
+        loadingSpinner.style.display = 'block';
+
+        // Hide error message initially
+        errorMessage.style.display = 'none';
+
+        // Simulate login delay
+        setTimeout(() => {
+            loadingSpinner.style.display = 'none';
+
+            if (username === 'user' && password === 'password') {
+                localStorage.setItem('loggedIn', 'true');
+                window.location.href = 'main.html';
+            } else {
+                errorMessage.style.display = 'block';
+            }
+        }, 1500);
+    }
+</script>
+
+</body>
+</html>
+
+

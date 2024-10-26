@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unicorn Widgets - Useless Share Market</title>
+    <style>
+        /* Styles */
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #fce4ec;
+            color: #333;
+            text-align: center;
+        }
+        header {
+            background-color: #ff80ab;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 5px dashed #f50057;
+        }
+        .stock-info, .detailed-info {
+            padding: 20px;
+            border: 3px solid #64b5f6;
+            background-color: #ffffff;
+            display: inline-block;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            max-width: 500px;
+            text-align: left;
+        }
+        .button {
+            background-color: #f50057;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        .button:hover {
+            background-color: #c51162;
+        }
+        /* Notification styling */
+        .notification {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #f44336;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            animation: slide-down 0.5s forwards, fade-out 2s 2.5s forwards;
+        }
+        @keyframes slide-down {
+            from { top: -100px; opacity: 0; }
+            to { top: 20px; opacity: 1; }
+        }
+        @keyframes fade-out {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Unicorn Widgets</h1>
+        <p>Stock details and fun facts!</p>
+    </header>
+
+    <!-- Brief Stock Info Section -->
+    <div class="stock-info">
+        <p><strong>Current Price:</strong> $123.45</p>
+        <p><strong>Yesterday’s High:</strong> $150.00</p>
+        <p><strong>Yesterday’s Low:</strong> $120.00</p>
+        <p class="funny">"Why did the unicorn buy a ladder? To reach the next level!"</p>
+    </div>
+
+    <!-- Detailed Stock Information Section -->
+    <div class="detailed-info">
+        <h3>About Unicorn Widgets</h3>
+        <p><strong>Industry:</strong> Magical Gadgets & Toys</p>
+        <p><strong>Market Cap:</strong> $10 Billion</p>
+        <p><strong>Dividend Yield:</strong> 4.0%</p>
+        <p><strong>P/E Ratio:</strong> 25.0</p>
+        <p><strong>Headquarters:</strong> Fantasyland, Enchanted Forest</p>
+        <p><strong>Fun Fact:</strong> Unicorn Widgets are known for their "Sparkle Widget," which brings joy to anyone who touches it!</p>
+        <p><strong>CEO:</strong> Lila Rainbowhorn</p>
+        <p><strong>Year Established:</strong> 2010</p>
+        <p><strong>Stock Symbol:</strong> UNI</p>
+    </div>
+
+    <!-- Notification Div -->
+    <div id="notification" class="notification"></div>
+
+    <!-- Buy and Sell Buttons at the Bottom of the Page -->
+    <div style="margin-top: 30px;">
+        <button class="button" onclick="buyStock()">Buy</button>
+        <button class="button" onclick="sellStock()">Sell</button>
+        <a href="BUSINESS.html" class="button">← Back to Stocks</a>
+    </div>
+
+    <script>
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.style.display = 'block';
+            setTimeout(() => { notification.style.display = 'none'; }, 4000);
+        }
+
+        function buyStock() {
+            const messages = [
+                "You've found a magical investment! 🦄",
+                "Buying Unicorn Widgets? You're on the right track to rainbows! 🌈",
+                "Congrats! You've just added some sparkle to your portfolio! ✨"
+            ];
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            showNotification(randomMessage);
+        }
+
+        function sellStock() {
+            const messages = [
+                "You sold your unicorn shares! Hope it doesn't leave you in the dust! 🦄",
+                "Selling? I hope you find another magical investment! ✨",
+                "Goodbye, Unicorn Widgets! May your profits be as high as a unicorn's dreams! 💰"
+            ];
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            showNotification(randomMessage);
+        }
+    </script>
+</body>
+</html>

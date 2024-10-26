@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banana Co. - Useless Share Market</title>
+    <style>
+        /* Styles */
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #e0f7fa;
+            color: #333;
+            text-align: center;
+        }
+        header {
+            background-color: #ffeb3b;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 5px dashed #ff9800;
+        }
+        .stock-info, .detailed-info {
+            padding: 20px;
+            border: 3px solid #66bb6a;
+            background-color: #ffffff;
+            display: inline-block;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            max-width: 500px;
+            text-align: left;
+        }
+        .button {
+            background-color: #ff9800;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        .button:hover {
+            background-color: #ff5722;
+        }
+        /* Notification styling */
+        .notification {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #f44336;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            animation: slide-down 0.5s forwards, fade-out 2s 2.5s forwards;
+        }
+        @keyframes slide-down {
+            from { top: -100px; opacity: 0; }
+            to { top: 20px; opacity: 1; }
+        }
+        @keyframes fade-out {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Banana Co.</h1>
+        <p>Stock details and fun facts!</p>
+    </header>
+
+    <!-- Brief Stock Info Section -->
+    <div class="stock-info">
+        <p><strong>Current Price:</strong> $305.75</p>
+        <p><strong>Yesterday’s High:</strong> $560.00</p>
+        <p><strong>Yesterday’s Low:</strong> $290.00</p>
+        <p class="funny">"Why did the banana go to the doctor? It wasn’t peeling well!"</p>
+    </div>
+
+    <!-- Detailed Stock Information Section -->
+    <div class="detailed-info">
+        <h3>About Banana Co.</h3>
+        <p><strong>Industry:</strong> Fresh Produce & Exports</p>
+        <p><strong>Market Cap:</strong> $15 Billion</p>
+        <p><strong>Dividend Yield:</strong> 2.8%</p>
+        <p><strong>P/E Ratio:</strong> 12.3</p>
+        <p><strong>Headquarters:</strong> Chiquita City, Costa Rica</p>
+        <p><strong>Fun Fact:</strong> Banana Co. is the world's leading supplier of the "Banana Phone," now also available as a ringtone!</p>
+        <p><strong>CEO:</strong> Bob Bananason</p>
+        <p><strong>Year Established:</strong> 1978</p>
+        <p><strong>Stock Symbol:</strong> BANA</p>
+    </div>
+
+    <!-- Notification Div -->
+    <div id="notification" class="notification"></div>
+
+    <!-- Buy and Sell Buttons at the Bottom of the Page -->
+    <div style="margin-top: 30px;">
+        <button class="button" onclick="buyStock()">Buy</button>
+        <button class="button" onclick="sellStock()">Sell</button>
+        <a href="BUSINESS.html" class="button">← Back to Stocks</a>
+    </div>
+
+    <script>
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.style.display = 'block';
+            setTimeout(() => { notification.style.display = 'none'; }, 4000);
+        }
+
+        function buyStock() {
+            const messages = [
+                "You’re going bananas for Banana Co.! 🍌",
+                "Buying Banana Co.? You must be ape-solutely thrilled! 🦧",
+                "Congrats! You're officially a top banana in the market! 😂"
+            ];
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            showNotification(randomMessage);
+        }
+
+        function sellStock() {
+            const messages = [
+                "Goodbye Banana Co! Hope you slip into some profits! 🍌",
+                "Selling already? Don't let the bananas rot in your portfolio! 🍌",
+                "Farewell, banana stocks! You’ve gone from peel to profit! 💰"
+            ];
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            showNotification(randomMessage);
+        }
+    </script>
+</body>
+</html>
+
+
+

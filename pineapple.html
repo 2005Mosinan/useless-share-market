@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pineapple Corp. - Useless Share Market</title>
+    <style>
+        /* Styles */
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #e0f7fa;
+            color: #333;
+            text-align: center;
+        }
+        header {
+            background-color: #ffcc00;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 5px dashed #ff5733;
+        }
+        .stock-info, .detailed-info {
+            padding: 20px;
+            border: 3px solid #66bb6a;
+            background-color: #ffffff;
+            display: inline-block;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            max-width: 500px;
+            text-align: left;
+        }
+        .button {
+            background-color: #ff5733;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        .button:hover {
+            background-color: #ff0000;
+        }
+        /* Notification styling */
+        .notification {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #f44336;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            animation: slide-down 0.5s forwards, fade-out 2s 2.5s forwards;
+        }
+        @keyframes slide-down {
+            from { top: -100px; opacity: 0; }
+            to { top: 20px; opacity: 1; }
+        }
+        @keyframes fade-out {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Pineapple Corp.</h1>
+        <p>Stock details and fun facts!</p>
+    </header>
+
+    <!-- Brief Stock Info Section -->
+    <div class="stock-info">
+        <p><strong>Current Price:</strong> $459.99</p>
+        <p><strong>Yesterday’s High:</strong> $820.00</p>
+        <p><strong>Yesterday’s Low:</strong> $380.00</p>
+        <p class="funny">"Did you hear about the pineapple that became a comedian? It had great delivery!"</p>
+    </div>
+
+    <!-- Detailed Stock Information Section -->
+    <div class="detailed-info">
+        <h3>About Pineapple Corp.</h3>
+        <p><strong>Industry:</strong> Tropical Fruits & Beverages</p>
+        <p><strong>Market Cap:</strong> $20 Billion</p>
+        <p><strong>Dividend Yield:</strong> 3.2%</p>
+        <p><strong>P/E Ratio:</strong> 15.6</p>
+        <p><strong>Headquarters:</strong> Honolulu, Hawaii</p>
+        <p><strong>Fun Fact:</strong> Pineapple Corp. was the first company to offer a "Pineapple Pizza Fund," leading to a global debate about pizza toppings.</p>
+        <p><strong>CEO:</strong> Juanita Pineappleston</p>
+        <p><strong>Year Established:</strong> 1985</p>
+        <p><strong>Stock Symbol:</strong> PINE</p>
+    </div>
+
+    <!-- Notification Div -->
+    <div id="notification" class="notification"></div>
+
+    <!-- Buy and Sell Buttons at the Bottom of the Page -->
+    <div style="margin-top: 30px;">
+        <button class="button" onclick="buyStock()">Buy</button>
+        <button class="button" onclick="sellStock()">Sell</button>
+        <a href="BUSINESS.html" class="button">← Back to Stocks</a>
+    </div>
+
+    <script>
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.style.display = 'block';
+            setTimeout(() => { notification.style.display = 'none'; }, 4000);
+        }
+
+        function buyStock() {
+            const messages = [
+                "You've invested in a tropical paradise! 🌴",
+                "Buying Pineapple Corp? Sweet choice! 🍍",
+                "Congratulations! You’re now a proud pineapple stakeholder! 😂"
+            ];
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            showNotification(randomMessage);
+        }
+
+        function sellStock() {
+            const messages = [
+                "You sold Pineapple Corp! Hope you don’t slip on the price! 🍌",
+                "Selling? Guess you’ve had your fill of tropical fruits! 🍹",
+                "Farewell, Pineapple shares! May your wallet stay juicy! 💰"
+            ];
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            showNotification(randomMessage);
+        }
+    </script>
+</body>
+</html>
+
+
+
